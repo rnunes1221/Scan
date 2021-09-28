@@ -42,18 +42,14 @@ namespace Scan {
             this.stat = new System.Windows.Forms.ColumnHeader();
             this.LUp = new System.Windows.Forms.ColumnHeader();
             this.label3 = new System.Windows.Forms.Label();
-            this.BoxAgendamento = new System.Windows.Forms.GroupBox();
-            this.btnAgenda = new System.Windows.Forms.Button();
-            this.rbdiario = new System.Windows.Forms.RadioButton();
-            this.rbMes = new System.Windows.Forms.RadioButton();
-            this.rbSemana = new System.Windows.Forms.RadioButton();
             this.CkMostraHost = new System.Windows.Forms.CheckBox();
             this.CkDown = new System.Windows.Forms.CheckBox();
             this.BtnScanIP = new System.Windows.Forms.Button();
             this.TxtSubnet = new System.Windows.Forms.MaskedTextBox();
             this.TxtIP = new System.Windows.Forms.MaskedTextBox();
             this.BoxFiltros = new System.Windows.Forms.GroupBox();
-            this.BoxAgendamento.SuspendLayout();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.BoxFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +58,7 @@ namespace Scan {
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 95);
+            this.label1.Location = new System.Drawing.Point(10, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 2;
@@ -74,7 +70,7 @@ namespace Scan {
             this.LabelStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LabelStatus.AutoSize = true;
             this.LabelStatus.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelStatus.Location = new System.Drawing.Point(6, 197);
+            this.LabelStatus.Location = new System.Drawing.Point(10, 208);
             this.LabelStatus.Name = "LabelStatus";
             this.LabelStatus.Size = new System.Drawing.Size(55, 16);
             this.LabelStatus.TabIndex = 3;
@@ -88,7 +84,7 @@ namespace Scan {
             this.BtnScan.ForeColor = System.Drawing.SystemColors.Desktop;
             this.BtnScan.Image = global::Scan.Properties.Resources._1486348532_music_play_pause_control_go_arrow_80458;
             this.BtnScan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnScan.Location = new System.Drawing.Point(188, 77);
+            this.BtnScan.Location = new System.Drawing.Point(192, 88);
             this.BtnScan.Name = "BtnScan";
             this.BtnScan.Size = new System.Drawing.Size(133, 52);
             this.BtnScan.TabIndex = 4;
@@ -111,7 +107,7 @@ namespace Scan {
             this.LblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblStatus.AutoSize = true;
             this.LblStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblStatus.Location = new System.Drawing.Point(79, 197);
+            this.LblStatus.Location = new System.Drawing.Point(83, 208);
             this.LblStatus.Name = "LblStatus";
             this.LblStatus.Size = new System.Drawing.Size(0, 21);
             this.LblStatus.TabIndex = 6;
@@ -166,75 +162,12 @@ namespace Scan {
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(6, 146);
+            this.label3.Location = new System.Drawing.Point(10, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "IP:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // BoxAgendamento
-            // 
-            this.BoxAgendamento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BoxAgendamento.Controls.Add(this.btnAgenda);
-            this.BoxAgendamento.Controls.Add(this.rbdiario);
-            this.BoxAgendamento.Controls.Add(this.rbMes);
-            this.BoxAgendamento.Controls.Add(this.rbSemana);
-            this.BoxAgendamento.Font = new System.Drawing.Font("Russo One", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BoxAgendamento.Location = new System.Drawing.Point(740, 1);
-            this.BoxAgendamento.Name = "BoxAgendamento";
-            this.BoxAgendamento.Size = new System.Drawing.Size(379, 158);
-            this.BoxAgendamento.TabIndex = 0;
-            this.BoxAgendamento.TabStop = false;
-            this.BoxAgendamento.Text = "Agendamento";
-            // 
-            // btnAgenda
-            // 
-            this.btnAgenda.Font = new System.Drawing.Font("Russo One", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAgenda.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnAgenda.Image = global::Scan.Properties.Resources._1486348532_music_play_pause_control_go_arrow_80458;
-            this.btnAgenda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgenda.Location = new System.Drawing.Point(6, 95);
-            this.btnAgenda.Name = "btnAgenda";
-            this.btnAgenda.Size = new System.Drawing.Size(303, 45);
-            this.btnAgenda.TabIndex = 3;
-            this.btnAgenda.Text = "Agendar Scan";
-            this.btnAgenda.UseVisualStyleBackColor = true;
-            this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
-            // 
-            // rbdiario
-            // 
-            this.rbdiario.AutoSize = true;
-            this.rbdiario.Location = new System.Drawing.Point(6, 20);
-            this.rbdiario.Name = "rbdiario";
-            this.rbdiario.Size = new System.Drawing.Size(100, 18);
-            this.rbdiario.TabIndex = 2;
-            this.rbdiario.TabStop = true;
-            this.rbdiario.Text = "Diariamente";
-            this.rbdiario.UseVisualStyleBackColor = true;
-            // 
-            // rbMes
-            // 
-            this.rbMes.AutoSize = true;
-            this.rbMes.Location = new System.Drawing.Point(6, 70);
-            this.rbMes.Name = "rbMes";
-            this.rbMes.Size = new System.Drawing.Size(69, 18);
-            this.rbMes.TabIndex = 1;
-            this.rbMes.TabStop = true;
-            this.rbMes.Text = "Mensal";
-            this.rbMes.UseVisualStyleBackColor = true;
-            // 
-            // rbSemana
-            // 
-            this.rbSemana.AutoSize = true;
-            this.rbSemana.Location = new System.Drawing.Point(6, 45);
-            this.rbSemana.Name = "rbSemana";
-            this.rbSemana.Size = new System.Drawing.Size(115, 18);
-            this.rbSemana.TabIndex = 0;
-            this.rbSemana.TabStop = true;
-            this.rbSemana.Text = "Semanalmente";
-            this.rbSemana.UseVisualStyleBackColor = true;
             // 
             // CkMostraHost
             // 
@@ -267,7 +200,7 @@ namespace Scan {
             this.BtnScanIP.ForeColor = System.Drawing.SystemColors.Desktop;
             this.BtnScanIP.Image = global::Scan.Properties.Resources._1486348532_music_play_pause_control_go_arrow_80458;
             this.BtnScanIP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnScanIP.Location = new System.Drawing.Point(188, 131);
+            this.BtnScanIP.Location = new System.Drawing.Point(192, 142);
             this.BtnScanIP.Name = "BtnScanIP";
             this.BtnScanIP.Size = new System.Drawing.Size(95, 52);
             this.BtnScanIP.TabIndex = 9;
@@ -282,7 +215,7 @@ namespace Scan {
             this.TxtSubnet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtSubnet.ForeColor = System.Drawing.SystemColors.GrayText;
             this.TxtSubnet.HideSelection = false;
-            this.TxtSubnet.Location = new System.Drawing.Point(69, 87);
+            this.TxtSubnet.Location = new System.Drawing.Point(73, 98);
             this.TxtSubnet.Mask = "##0\\.##0\\.##0\\";
             this.TxtSubnet.Name = "TxtSubnet";
             this.TxtSubnet.RejectInputOnFirstFailure = true;
@@ -296,7 +229,7 @@ namespace Scan {
             this.TxtIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TxtIP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtIP.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.TxtIP.Location = new System.Drawing.Point(42, 141);
+            this.TxtIP.Location = new System.Drawing.Point(46, 152);
             this.TxtIP.Mask = "##0\\.##0\\.##0\\.##0\\";
             this.TxtIP.Name = "TxtIP";
             this.TxtIP.Size = new System.Drawing.Size(140, 29);
@@ -308,6 +241,8 @@ namespace Scan {
             // 
             this.BoxFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BoxFiltros.Controls.Add(this.label2);
+            this.BoxFiltros.Controls.Add(this.txtPesquisa);
             this.BoxFiltros.Controls.Add(this.CkDown);
             this.BoxFiltros.Controls.Add(this.BtnScanIP);
             this.BoxFiltros.Controls.Add(this.TxtIP);
@@ -319,13 +254,33 @@ namespace Scan {
             this.BoxFiltros.Controls.Add(this.BtnScan);
             this.BoxFiltros.Controls.Add(this.label1);
             this.BoxFiltros.Font = new System.Drawing.Font("Russo One", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BoxFiltros.Location = new System.Drawing.Point(740, 165);
+            this.BoxFiltros.Location = new System.Drawing.Point(740, 1);
             this.BoxFiltros.Name = "BoxFiltros";
-            this.BoxFiltros.Size = new System.Drawing.Size(379, 469);
+            this.BoxFiltros.Size = new System.Drawing.Size(379, 633);
             this.BoxFiltros.TabIndex = 15;
             this.BoxFiltros.TabStop = false;
             this.BoxFiltros.Text = "Filtros";
             this.BoxFiltros.Enter += new System.EventHandler(this.BoxFiltros_Enter);
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPesquisa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPesquisa.Location = new System.Drawing.Point(83, 267);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(203, 29);
+            this.txtPesquisa.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(9, 275);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 16);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Pesquisa";
             // 
             // Form1
             // 
@@ -335,14 +290,11 @@ namespace Scan {
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1119, 691);
             this.Controls.Add(this.BoxFiltros);
-            this.Controls.Add(this.BoxAgendamento);
             this.Controls.Add(this.ListView1);
             this.Controls.Add(this.PBar);
             this.Name = "Form1";
             this.Text = "Tela Principal de Escaneamento de Subnet";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.BoxAgendamento.ResumeLayout(false);
-            this.BoxAgendamento.PerformLayout();
             this.BoxFiltros.ResumeLayout(false);
             this.BoxFiltros.PerformLayout();
             this.ResumeLayout(false);
@@ -365,11 +317,6 @@ namespace Scan {
         private System.Windows.Forms.Label LblStatus;
         private System.Windows.Forms.ListView ListView1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox BoxAgendamento;
-        private System.Windows.Forms.Button btnAgenda;
-        private System.Windows.Forms.RadioButton rbdiario;
-        private System.Windows.Forms.RadioButton rbMes;
-        private System.Windows.Forms.RadioButton rbSemana;
         private Button BtnScanIP;
         private CheckBox CkMostraHost;
         private CheckBox CkDown;
@@ -380,6 +327,8 @@ namespace Scan {
         public ColumnHeader host;
         public ColumnHeader stat;
         public ColumnHeader LUp;
+        private Label label2;
+        private TextBox txtPesquisa;
     }
 }
 
