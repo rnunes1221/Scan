@@ -9,8 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Scan {
-    public partial class Historico : Form {
+    public partial class Historico : MetroFramework.Forms.MetroForm {
         public Historico() {
             InitializeComponent();
         }

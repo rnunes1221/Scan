@@ -14,7 +14,7 @@ using System.Globalization;
 using System.Data.SqlClient;
 
 namespace Scan {
-    public partial class Form1 : Form {
+    public partial class Form1 : MetroFramework.Forms.MetroForm {
 
         public Form1() {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace Scan {
         }
 
         public void BtnScan_Click(object sender, EventArgs e) {
-            
+
 
             //Instancia Variaveis
             string subnet = TxtSubnet.Text;
@@ -37,14 +37,14 @@ namespace Scan {
             ListView1.Items.Clear();
 
 
-            
+
             //Laço buscando ip's da SUBNET e retornando no ListView
 
             for (int i = 1; i <= PBar.Maximum; i++) {
                 PBar.Value += 1;
                 //Application.DoEvents();
                 string ip = $"{subnet}.{i}";
-                string status = "";
+                
                 Ping ping = new Ping();
                 PingReply reply = ping.Send(ip, 100);
 
@@ -67,7 +67,7 @@ namespace Scan {
                             Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Up", DateTime.Now.ToString());
                         }
 
-                        
+
                         LblStatus.ForeColor = Color.Blue;
                         LblStatus.Text = $"Escaneando: {ip}";
                         if (PBar.Value == PBar.Maximum)
@@ -91,19 +91,19 @@ namespace Scan {
                     catch {
 
                     }
-                    
-                    
+
+
 
 
 
                 }
                 Application.DoEvents();
                 //Comando para o cursor descer junto com os itens do ListView
-               // var items = ListView1.Items;
-               // var last = items[items.Count];
+                // var items = ListView1.Items;
+                // var last = items[items.Count];
                 //last.EnsureVisible();
             }
-          
+
 
             MessageBox.Show("Processo finalizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -112,7 +112,7 @@ namespace Scan {
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e) {
-           
+
         }
 
         private void btnAgenda_Click(object sender, EventArgs e) {
@@ -120,7 +120,7 @@ namespace Scan {
 
         }
 
-        private void btnScanIP_Click(object sender, EventArgs e) { 
+        private void btnScanIP_Click(object sender, EventArgs e) {
             
             //Instancia Variaveis
             string ips = TxtIP.Text;
@@ -133,41 +133,41 @@ namespace Scan {
 
 
 
-                for (int i = 0; i < 1; i++) {
-                    string ip = $"{ips}";
+            for (int i = 0; i < 1; i++) {
+                string ip = $"{ips}";
+
                 
-                string status = "";
                 Ping ping = new Ping();
-                    PingReply reply = ping.Send(ip, 100);
-                    if (reply.Status == IPStatus.Success) {
-                        
-                            try {
-                                IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
+                PingReply reply = ping.Send(ip, 100);
+                if (reply.Status == IPStatus.Success) {
+
+                    try {
+                        IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
                         ListView1.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Up", DateTime.Now.ToString() }));
                         Cadastro cad = new Cadastro(ip.ToString(), host.HostName, "Up", DateTime.Now.ToString());
                     }
-                            catch {
-                                // MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            PBar.Value += 1;
-                            LblStatus.ForeColor = Color.Blue;
-                            LblStatus.Text = $"Scanning: {ip}";
-                            if (PBar.Value == 3)
-                                LblStatus.Text = "Finished";
-                       
+                    catch {
+                        // MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else {
-                        
-                            PBar.Value += 1;
-                            LblStatus.ForeColor = Color.DarkGray;
-                            LblStatus.Text = $"Scanning: {ip}";
-                            ListView1.Items.Add(new ListViewItem(new String[] { ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString() }));
-                            Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString());
-                            if (PBar.Value == 3)
-                                LblStatus.Text = "Finished";
-                       
-                    }
+                    PBar.Value += 1;
+                    LblStatus.ForeColor = Color.Blue;
+                    LblStatus.Text = $"Scanning: {ip}";
+                    if (PBar.Value == 3)
+                        LblStatus.Text = "Finished";
+
                 }
+                else {
+
+                    PBar.Value += 1;
+                    LblStatus.ForeColor = Color.DarkGray;
+                    LblStatus.Text = $"Scanning: {ip}";
+                    ListView1.Items.Add(new ListViewItem(new String[] { ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString() }));
+                    Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString());
+                    if (PBar.Value == 3)
+                        LblStatus.Text = "Finished";
+
+                }
+            }
 
 
 
@@ -175,7 +175,7 @@ namespace Scan {
 
 
 
-            
+
 
 
 
@@ -193,21 +193,21 @@ namespace Scan {
         }
 
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) {
-            
+
         }
 
         private void maskedTextBox1_Click(object sender, EventArgs e) {
-            
+
         }
 
         private void maskedTextBox1_Click_1(object sender, EventArgs e) {
-           //Comando para iniciar o Focus na esquerda
+            //Comando para iniciar o Focus na esquerda
             TxtSubnet.Select(0, 0);
             TxtSubnet.ValidatingType = typeof(System.Net.IPAddress);
         }
 
         private void maskedTextBox1_MaskInputRejected_1(object sender, MaskInputRejectedEventArgs e) {
-            
+
         }
 
         private void TxtIP_TextChanged(object sender, EventArgs e) {
@@ -239,12 +239,12 @@ namespace Scan {
         private void ListView1_DoubleClick(object sender, EventArgs e) {
             var myHistorico = new Historico();
             Program.ipgrid = ListView1.SelectedItems[0].SubItems[0].Text;
-         
+
 
             myHistorico.Show();
 
-           
-         
+
+
 
 
 
@@ -253,8 +253,116 @@ namespace Scan {
         private void CkMostraHost_CheckedChanged(object sender, EventArgs e) {
 
         }
+
+        private void txtPesquisa_Enter(object sender, EventArgs e) {
+
+
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e) {
+            if (ListView1.Items.Count > 0) {
+
+                //procura o item pelo texto
+
+                ListViewItem foundItem =
+
+                    ListView1.FindItemWithText(txtPesquisa.Text, true, 10, true);
+
+                //verifica se o item foi encontrado
+
+                if (foundItem != null) {
+
+                    //Verifica se não existe o grupo Localizado
+
+                    //senão tiver cria grupo para destacar o item localizado
+
+                    if (ListView1.Groups["Localizado"] == null)
+
+                        ListView1.Groups.Add("Localizado", "Localizado");
+
+                    //se o grupo possuir items entao remove o mesmo do grupo
+
+                    //para que ele volte ao grupo default
+
+                    if (ListView1.Groups["Localizado"].Items.Count > 0)
+
+                        ListView1.Groups["Localizado"].Items[0].Group = null;
+
+                    //aloca o item encontrado ao grupo localizado
+
+                    foundItem.Group = ListView1.Groups["Localizado"];
+                    
+
+
+
+
+
+
+
+
+
+                    //       if (ListView1.Items.Count > 0) {
+                    //  for (int i = 0; i <= ListView1.Items.Count; i++) {
+
+
+                    // ListView1.Items.Clear();
+
+
+                    //  if (txtPesquisa.ToString() == ListView1.Items.ToString()) {
+                    //     MessageBox.Show("Processo finalizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // item.SubItems.Add(ListView1.ToString());
+                    // ListView1.Items.Clear();
+                    // ListView1.Items.Add(txtPesquisa.Text);
+
+
+                }
+
+            }
+
+        
+
+    
+
+        }
+
+        private void txtPesquisa_Leave(object sender, EventArgs e) {
+            
+
+          
+
+
+        }
+
+        private void objectListView2_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void fastObjectListView1_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void Form1_QueryAccessibilityHelp(object sender, QueryAccessibilityHelpEventArgs e)
+        {
+
+        }
+
+        private void PBar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void PBar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnScan_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
     }
+    
 
 
 

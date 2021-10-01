@@ -28,3 +28,4 @@ G:\Administrador\Desktop\Scan\Scan\Scan\obj\Debug\net5.0-windows\Scan.pdb
 G:\Administrador\Desktop\Scan\Scan\Scan\obj\Debug\net5.0-windows\Scan.genruntimeconfig.cache
 G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\net5.0-windows\FirebirdSql.Data.FirebirdClient.dll
 G:\Administrador\Desktop\Scan\Scan\Scan\obj\Debug\net5.0-windows\Scan.Historico.resources
+G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\net5.0-windows\ObjectListView.dll

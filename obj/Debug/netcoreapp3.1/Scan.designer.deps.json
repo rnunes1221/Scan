@@ -6,6 +6,30 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "FirebirdSql.Data.FirebirdClient/8.0.1": {
+        "runtime": {
+          "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.1.0"
+          }
+        }
+      },
+      "MetroModernUI/1.4.0": {
+        "runtime": {
+          "lib/net/MetroFramework.Design.dll": {
+            "assemblyVersion": "1.4.0.0",
+            "fileVersion": "1.4.0.0"
+          },
+          "lib/net/MetroFramework.Fonts.dll": {
+            "assemblyVersion": "1.4.0.0",
+            "fileVersion": "1.4.0.0"
+          },
+          "lib/net/MetroFramework.dll": {
+            "assemblyVersion": "1.4.0.0",
+            "fileVersion": "1.4.0.0"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.Win32.Registry/4.7.0": {
         "dependencies": {
@@ -139,6 +163,20 @@
     }
   },
   "libraries": {
+    "FirebirdSql.Data.FirebirdClient/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pkyETRD3lQSK8GpMIkCVqa26yvSrZWt/F4J2Fdgl3h8xa4SjdwlW1BK8ctb8sFHcvDViL1YauHrrH9iaiFLWew==",
+      "path": "firebirdsql.data.firebirdclient/8.0.1",
+      "hashPath": "firebirdsql.data.firebirdclient.8.0.1.nupkg.sha512"
+    },
+    "MetroModernUI/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-p2F3w8bF1tb0tpkDceEVO65UYMKnJxdQyNxVyl/OjrFZHighicLYZDppKkiqmvBZ10XUi2mqHiIJUzXBP3GElQ==",
+      "path": "metromodernui/1.4.0",
+      "hashPath": "metromodernui.1.4.0.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
       "serviceable": true,

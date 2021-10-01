@@ -1,14 +1,27 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {
+    ".NETCoreApp,Version=v3.1": {
       "FirebirdSql.Data.FirebirdClient/8.0.1": {
         "type": "package",
         "compile": {
-          "lib/net5.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll": {}
         },
         "runtime": {
-          "lib/net5.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll": {}
+        }
+      },
+      "MetroModernUI/1.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net/MetroFramework.Design.dll": {},
+          "lib/net/MetroFramework.Fonts.dll": {},
+          "lib/net/MetroFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net/MetroFramework.Design.dll": {},
+          "lib/net/MetroFramework.Fonts.dll": {},
+          "lib/net/MetroFramework.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {
@@ -159,6 +172,20 @@
         "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll",
         "license.txt",
         "readme.txt"
+      ]
+    },
+    "MetroModernUI/1.4.0": {
+      "sha512": "p2F3w8bF1tb0tpkDceEVO65UYMKnJxdQyNxVyl/OjrFZHighicLYZDppKkiqmvBZ10XUi2mqHiIJUzXBP3GElQ==",
+      "type": "package",
+      "path": "metromodernui/1.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net/MetroFramework.Design.dll",
+        "lib/net/MetroFramework.Fonts.dll",
+        "lib/net/MetroFramework.dll",
+        "metromodernui.1.4.0.nupkg.sha512",
+        "metromodernui.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
@@ -476,8 +503,9 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": [
+    ".NETCoreApp,Version=v3.1": [
       "FirebirdSql.Data.FirebirdClient >= 8.0.1",
+      "MetroModernUI >= 1.4.0",
       "System.Data.SqlClient >= 4.8.2"
     ]
   },
@@ -505,15 +533,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0-windows7.0"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0-windows7.0": {
-          "targetAlias": "net5.0-windows",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -524,12 +552,16 @@
       }
     },
     "frameworks": {
-      "net5.0-windows7.0": {
-        "targetAlias": "net5.0-windows",
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "FirebirdSql.Data.FirebirdClient": {
             "target": "Package",
             "version": "[8.0.1, )"
+          },
+          "MetroModernUI": {
+            "target": "Package",
+            "version": "[1.4.0, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
@@ -557,5 +589,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MetroModernUI 1.4.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "MetroModernUI",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

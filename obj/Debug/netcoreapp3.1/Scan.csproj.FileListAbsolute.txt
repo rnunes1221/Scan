@@ -23,3 +23,8 @@ G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\netcoreapp3.1\runtimes\win\lib
 G:\Administrador\Desktop\Scan\Scan\Scan\obj\Debug\netcoreapp3.1\Scan.csproj.CopyComplete
 G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\netcoreapp3.1\Scan.dll.config
 G:\Administrador\Desktop\Scan\Scan\Scan\obj\Debug\netcoreapp3.1\Scan.csproj.ResolveComReference.cache
+G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\netcoreapp3.1\FirebirdSql.Data.FirebirdClient.dll
+G:\Administrador\Desktop\Scan\Scan\Scan\obj\Debug\netcoreapp3.1\Scan.Historico.resources
+G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\netcoreapp3.1\MetroFramework.Design.dll
+G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\netcoreapp3.1\MetroFramework.Fonts.dll
+G:\Administrador\Desktop\Scan\Scan\Scan\bin\Debug\netcoreapp3.1\MetroFramework.dll

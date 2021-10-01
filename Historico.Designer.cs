@@ -30,7 +30,6 @@ namespace Scan {
             this.Hosts = new System.Windows.Forms.ColumnHeader();
             this.Status = new System.Windows.Forms.ColumnHeader();
             this.Date = new System.Windows.Forms.ColumnHeader();
-            this.btnClose = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -48,10 +47,10 @@ namespace Scan {
             this.ListViewHistorico.FullRowSelect = true;
             this.ListViewHistorico.GridLines = true;
             this.ListViewHistorico.HideSelection = false;
-            this.ListViewHistorico.Location = new System.Drawing.Point(1, 12);
+            this.ListViewHistorico.Location = new System.Drawing.Point(1, 63);
             this.ListViewHistorico.Name = "ListViewHistorico";
             this.ListViewHistorico.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ListViewHistorico.Size = new System.Drawing.Size(737, 358);
+            this.ListViewHistorico.Size = new System.Drawing.Size(788, 503);
             this.ListViewHistorico.TabIndex = 2;
             this.ListViewHistorico.UseCompatibleStateImageBehavior = false;
             this.ListViewHistorico.View = System.Windows.Forms.View.Details;
@@ -78,24 +77,14 @@ namespace Scan {
             this.Date.Text = "Data";
             this.Date.Width = 250;
             // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(327, 378);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(98, 33);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
             // Historico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 418);
+            this.ClientSize = new System.Drawing.Size(782, 574);
             this.Controls.Add(this.ListViewHistorico);
-            this.Controls.Add(this.btnClose);
             this.Name = "Historico";
-            this.Text = "Historico";
+            this.Text = "HISTORICO DE IP\'S";
             this.Load += new System.EventHandler(this.Historico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -105,7 +94,6 @@ namespace Scan {
         #endregion
 
         private System.Windows.Forms.ListView ListViewHistorico;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.BindingSource bindingSource1;
         public System.Windows.Forms.ColumnHeader IpAddress;
         public System.Windows.Forms.ColumnHeader Hosts;
