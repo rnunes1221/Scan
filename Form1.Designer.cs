@@ -119,7 +119,7 @@ namespace Scan
             // ip
             // 
             this.ip.Text = "IP Address";
-            this.ip.Width = 180;
+            this.ip.Width = 150;
             // 
             // host
             // 
@@ -227,7 +227,7 @@ namespace Scan
             this.BtnScanIP.TabIndex = 17;
             this.BtnScanIP.Text = "IP ADDRESS";
             this.BtnScanIP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnScanIP.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.BtnScanIP.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.BtnScanIP.UseCustomBackColor = true;
             this.BtnScanIP.UseCustomForeColor = true;
             this.BtnScanIP.UseSelectable = true;
@@ -249,7 +249,7 @@ namespace Scan
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroButton1.TabIndex = 16;
             this.metroButton1.Text = "SUBNET";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;

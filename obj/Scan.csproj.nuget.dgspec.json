@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Administrador\\Desktop\\Scan\\Scan\\Scan\\Scan.csproj": {}
+    "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj": {}
   },
   "projects": {
-    "G:\\Administrador\\Desktop\\Scan\\Scan\\Scan\\Scan.csproj": {
+    "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Administrador\\Desktop\\Scan\\Scan\\Scan\\Scan.csproj",
+        "projectUniqueName": "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj",
         "projectName": "Scan",
-        "projectPath": "G:\\Administrador\\Desktop\\Scan\\Scan\\Scan\\Scan.csproj",
+        "projectPath": "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj",
         "packagesPath": "C:\\Users\\rnunes\\.nuget\\packages\\",
-        "outputPath": "G:\\Administrador\\Desktop\\Scan\\Scan\\Scan\\obj\\",
+        "outputPath": "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

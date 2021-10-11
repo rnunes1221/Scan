@@ -260,70 +260,27 @@ namespace Scan {
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e) {
-            if (ListView1.Items.Count > 0) {
-
-                //procura o item pelo texto
-
-                ListViewItem foundItem =
-
-                    ListView1.FindItemWithText(txtPesquisa.Text, true, 10, true);
-
-                //verifica se o item foi encontrado
-
-                if (foundItem != null) {
-
-                    //Verifica se não existe o grupo Localizado
-
-                    //senão tiver cria grupo para destacar o item localizado
-
-                    if (ListView1.Groups["Localizado"] == null)
-
-                        ListView1.Groups.Add("Localizado", "Localizado");
-
-                    //se o grupo possuir items entao remove o mesmo do grupo
-
-                    //para que ele volte ao grupo default
-
-                    if (ListView1.Groups["Localizado"].Items.Count > 0)
-
-                        ListView1.Groups["Localizado"].Items[0].Group = null;
-
-                    //aloca o item encontrado ao grupo localizado
-
-                    foundItem.Group = ListView1.Groups["Localizado"];
-                    
-
-
-
-
-
-
-
-
-
-                    //       if (ListView1.Items.Count > 0) {
-                    //  for (int i = 0; i <= ListView1.Items.Count; i++) {
-
-
-                    // ListView1.Items.Clear();
-
-
-                    //  if (txtPesquisa.ToString() == ListView1.Items.ToString()) {
-                    //     MessageBox.Show("Processo finalizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // item.SubItems.Add(ListView1.ToString());
-                    // ListView1.Items.Clear();
-                    // ListView1.Items.Add(txtPesquisa.Text);
-
-
+            if (txtPesquisa.Text != "")
+            {
+                for (int i = ListView1.Items.Count - 1; i >= 0; i--)
+                {
+                    var item = ListView1.Items[i];
+                    if (item.Text.ToLower().Contains(txtPesquisa.Text.ToLower()))
+                    {
+                        item.BackColor = SystemColors.Highlight;
+                        item.ForeColor = SystemColors.HighlightText;
+                    }
+                    else
+                    {
+                        ListView1.Items.Remove(item);
+                    }
                 }
 
-            }
 
-        
-
-    
-
+            
         }
+            
+           } 
 
         private void txtPesquisa_Leave(object sender, EventArgs e) {
             

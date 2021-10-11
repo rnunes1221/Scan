@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zCF+xNVCnKt1OWI7xRJ8Gyes7adLFykKZILppTw6tKYvNhOLGeh7BpOLVFcScpNOXIQJs5NfG0tcrRVvsW6GkA==",
+  "dgSpecHash": "qZpQxZN85RtAVtcTHUtAntojwfhjIUcEalCKv5n9hUn4Y61wbIJigacGNi8bF0ihCyheFt/stHGknoASyf7IEQ==",
   "success": true,
-  "projectFilePath": "G:\\Administrador\\Desktop\\Scan\\Scan\\Scan\\Scan.csproj",
+  "projectFilePath": "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rnunes\\.nuget\\packages\\firebirdsql.data.firebirdclient\\8.0.1\\firebirdsql.data.firebirdclient.8.0.1.nupkg.sha512",
     "C:\\Users\\rnunes\\.nuget\\packages\\metromodernui\\1.4.0\\metromodernui.1.4.0.nupkg.sha512",
