@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qZpQxZN85RtAVtcTHUtAntojwfhjIUcEalCKv5n9hUn4Y61wbIJigacGNi8bF0ihCyheFt/stHGknoASyf7IEQ==",
+  "dgSpecHash": "JITE/4m6mLAhh6IMYry+fkctIVbcKiNwuBo+sseVThjV/SxzmsYAEtqwkwlKyCynG49Yf5uI408N4LiO0eTAaQ==",
   "success": true,
-  "projectFilePath": "G:\\Administrador\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj",
+  "projectFilePath": "D:\\rnunes\\Desktop\\Scan\\Projeto\\Scan\\Scan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rnunes\\.nuget\\packages\\firebirdsql.data.firebirdclient\\8.0.1\\firebirdsql.data.firebirdclient.8.0.1.nupkg.sha512",
     "C:\\Users\\rnunes\\.nuget\\packages\\metromodernui\\1.4.0\\metromodernui.1.4.0.nupkg.sha512",
@@ -21,7 +21,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'MetroModernUI 1.4.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "O pacote 'MetroModernUI 1.4.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
       "libraryId": "MetroModernUI",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"

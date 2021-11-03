@@ -38,6 +38,7 @@ namespace Scan
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.LabelStatus = new System.Windows.Forms.Label();
             this.LblStatus = new System.Windows.Forms.Label();
@@ -52,11 +53,12 @@ namespace Scan
             this.TxtIP = new System.Windows.Forms.MaskedTextBox();
             this.BoxFiltros = new System.Windows.Forms.GroupBox();
             this.BtnScanIP = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.BtnScan = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.PBar = new MetroFramework.Controls.MetroProgressBar();
             this.fbCommand1 = new FirebirdSql.Data.FirebirdClient.FbCommand();
+            this.BtnStop = new MetroFramework.Controls.MetroButton();
             this.BoxFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,10 +66,10 @@ namespace Scan
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(10, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Subnet:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -75,10 +77,10 @@ namespace Scan
             // LabelStatus
             // 
             this.LabelStatus.AutoSize = true;
-            this.LabelStatus.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LabelStatus.Location = new System.Drawing.Point(10, 208);
             this.LabelStatus.Name = "LabelStatus";
-            this.LabelStatus.Size = new System.Drawing.Size(55, 16);
+            this.LabelStatus.Size = new System.Drawing.Size(47, 16);
             this.LabelStatus.TabIndex = 3;
             this.LabelStatus.Text = "Status:";
             // 
@@ -139,10 +141,10 @@ namespace Scan
             // CkMostraHost
             // 
             this.CkMostraHost.AutoSize = true;
-            this.CkMostraHost.Font = new System.Drawing.Font("Russo One", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CkMostraHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CkMostraHost.Location = new System.Drawing.Point(6, 62);
             this.CkMostraHost.Name = "CkMostraHost";
-            this.CkMostraHost.Size = new System.Drawing.Size(116, 18);
+            this.CkMostraHost.Size = new System.Drawing.Size(102, 19);
             this.CkMostraHost.TabIndex = 10;
             this.CkMostraHost.Text = "Mostrar Hosts";
             this.CkMostraHost.UseVisualStyleBackColor = true;
@@ -151,10 +153,10 @@ namespace Scan
             // CkDown
             // 
             this.CkDown.AutoSize = true;
-            this.CkDown.Font = new System.Drawing.Font("Russo One", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CkDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CkDown.Location = new System.Drawing.Point(6, 37);
             this.CkDown.Name = "CkDown";
-            this.CkDown.Size = new System.Drawing.Size(237, 18);
+            this.CkDown.Size = new System.Drawing.Size(207, 19);
             this.CkDown.TabIndex = 11;
             this.CkDown.Text = "Mostrar Somente Ip\'s disponíveis";
             this.CkDown.UseVisualStyleBackColor = true;
@@ -191,8 +193,9 @@ namespace Scan
             // 
             this.BoxFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BoxFiltros.Controls.Add(this.BtnStop);
             this.BoxFiltros.Controls.Add(this.BtnScanIP);
-            this.BoxFiltros.Controls.Add(this.metroButton1);
+            this.BoxFiltros.Controls.Add(this.BtnScan);
             this.BoxFiltros.Controls.Add(this.label2);
             this.BoxFiltros.Controls.Add(this.txtPesquisa);
             this.BoxFiltros.Controls.Add(this.CkDown);
@@ -202,7 +205,7 @@ namespace Scan
             this.BoxFiltros.Controls.Add(this.LabelStatus);
             this.BoxFiltros.Controls.Add(this.CkMostraHost);
             this.BoxFiltros.Controls.Add(this.label1);
-            this.BoxFiltros.Font = new System.Drawing.Font("Russo One", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BoxFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BoxFiltros.ForeColor = System.Drawing.SystemColors.Desktop;
             this.BoxFiltros.Location = new System.Drawing.Point(704, 57);
             this.BoxFiltros.Name = "BoxFiltros";
@@ -235,41 +238,42 @@ namespace Scan
             this.BtnScanIP.UseVisualStyleBackColor = false;
             this.BtnScanIP.Click += new System.EventHandler(this.btnScanIP_Click);
             // 
-            // metroButton1
+            // BtnScan
             // 
-            this.metroButton1.BackColor = System.Drawing.Color.AliceBlue;
-            this.metroButton1.BackgroundImage = global::Scan.Properties.Resources._1486348532_music_play_pause_control_go_arrow_80458;
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.metroButton1.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.metroButton1.Highlight = true;
-            this.metroButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroButton1.Location = new System.Drawing.Point(6, 98);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(95, 35);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroButton1.TabIndex = 16;
-            this.metroButton1.Text = "SUBNET";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseCustomForeColor = true;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
-            this.metroButton1.UseVisualStyleBackColor = false;
-            this.metroButton1.Click += new System.EventHandler(this.BtnScan_Click);
+            this.BtnScan.BackColor = System.Drawing.Color.AliceBlue;
+            this.BtnScan.BackgroundImage = global::Scan.Properties.Resources._1486348532_music_play_pause_control_go_arrow_80458;
+            this.BtnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnScan.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnScan.Highlight = true;
+            this.BtnScan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnScan.Location = new System.Drawing.Point(6, 98);
+            this.BtnScan.Name = "BtnScan";
+            this.BtnScan.Size = new System.Drawing.Size(95, 35);
+            this.BtnScan.Style = MetroFramework.MetroColorStyle.Blue;
+            this.BtnScan.TabIndex = 16;
+            this.BtnScan.Text = "SUBNET";
+            this.BtnScan.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.BtnScan.UseCustomBackColor = true;
+            this.BtnScan.UseCustomForeColor = true;
+            this.BtnScan.UseSelectable = true;
+            this.BtnScan.UseStyleColors = true;
+            this.BtnScan.UseVisualStyleBackColor = false;
+            this.BtnScan.Click += new System.EventHandler(this.BtnScan_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Russo One", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(9, 275);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 16);
+            this.label2.Size = new System.Drawing.Size(64, 16);
             this.label2.TabIndex = 15;
             this.label2.Text = "Pesquisa";
             // 
             // txtPesquisa
             // 
             this.txtPesquisa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPesquisa.ForeColor = System.Drawing.SystemColors.InfoText;
             this.txtPesquisa.Location = new System.Drawing.Point(84, 267);
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(203, 29);
@@ -297,6 +301,25 @@ namespace Scan
             // 
             this.fbCommand1.CommandTimeout = 30;
             // 
+            // BtnStop
+            // 
+            this.BtnStop.BackColor = System.Drawing.Color.AliceBlue;
+            this.BtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.BackgroundImage")));
+            this.BtnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnStop.Highlight = true;
+            this.BtnStop.Location = new System.Drawing.Point(303, 98);
+            this.BtnStop.Name = "BtnStop";
+            this.BtnStop.Size = new System.Drawing.Size(42, 29);
+            this.BtnStop.Style = MetroFramework.MetroColorStyle.Blue;
+            this.BtnStop.TabIndex = 18;
+            this.BtnStop.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.BtnStop.UseCustomBackColor = true;
+            this.BtnStop.UseCustomForeColor = true;
+            this.BtnStop.UseSelectable = true;
+            this.BtnStop.UseStyleColors = true;
+            this.BtnStop.UseVisualStyleBackColor = false;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -307,7 +330,7 @@ namespace Scan
             this.Controls.Add(this.PBar);
             this.Controls.Add(this.BoxFiltros);
             this.Controls.Add(this.ListView1);
-            this.Font = new System.Drawing.Font("Russo One", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Name = "Form1";
             this.Text = "GERENCIAMENTO DE IP\'S";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -347,7 +370,8 @@ namespace Scan
         private MetroFramework.Controls.MetroProgressBar PBar;
         private FirebirdSql.Data.FirebirdClient.FbCommand fbCommand1;
         private MetroFramework.Controls.MetroButton BtnScanIP;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton BtnScan;
+        private MetroButton BtnStop;
     }
 }
 
