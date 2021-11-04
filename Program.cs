@@ -18,6 +18,7 @@ namespace Scan {
             
         }
         public static string ipgrid;
+        public static int stp = 0;
       
     }
 }

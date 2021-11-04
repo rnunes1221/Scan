@@ -44,6 +44,8 @@ namespace Scan {
             this.Hosts,
             this.Status,
             this.Date});
+            this.ListViewHistorico.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ListViewHistorico.ForeColor = System.Drawing.SystemColors.GrayText;
             this.ListViewHistorico.FullRowSelect = true;
             this.ListViewHistorico.GridLines = true;
             this.ListViewHistorico.HideSelection = false;

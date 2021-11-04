@@ -52,13 +52,13 @@ namespace Scan
             this.TxtSubnet = new System.Windows.Forms.MaskedTextBox();
             this.TxtIP = new System.Windows.Forms.MaskedTextBox();
             this.BoxFiltros = new System.Windows.Forms.GroupBox();
+            this.BtnStop = new MetroFramework.Controls.MetroButton();
             this.BtnScanIP = new MetroFramework.Controls.MetroButton();
             this.BtnScan = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.PBar = new MetroFramework.Controls.MetroProgressBar();
             this.fbCommand1 = new FirebirdSql.Data.FirebirdClient.FbCommand();
-            this.BtnStop = new MetroFramework.Controls.MetroButton();
             this.BoxFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,6 +215,25 @@ namespace Scan
             this.BoxFiltros.Text = "Filtros";
             this.BoxFiltros.Enter += new System.EventHandler(this.BoxFiltros_Enter);
             // 
+            // BtnStop
+            // 
+            this.BtnStop.BackColor = System.Drawing.Color.AliceBlue;
+            this.BtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.BackgroundImage")));
+            this.BtnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnStop.Highlight = true;
+            this.BtnStop.Location = new System.Drawing.Point(303, 98);
+            this.BtnStop.Name = "BtnStop";
+            this.BtnStop.Size = new System.Drawing.Size(42, 29);
+            this.BtnStop.Style = MetroFramework.MetroColorStyle.Blue;
+            this.BtnStop.TabIndex = 18;
+            this.BtnStop.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.BtnStop.UseCustomBackColor = true;
+            this.BtnStop.UseCustomForeColor = true;
+            this.BtnStop.UseSelectable = true;
+            this.BtnStop.UseStyleColors = true;
+            this.BtnStop.UseVisualStyleBackColor = false;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            // 
             // BtnScanIP
             // 
             this.BtnScanIP.BackColor = System.Drawing.Color.AliceBlue;
@@ -301,25 +320,6 @@ namespace Scan
             // 
             this.fbCommand1.CommandTimeout = 30;
             // 
-            // BtnStop
-            // 
-            this.BtnStop.BackColor = System.Drawing.Color.AliceBlue;
-            this.BtnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnStop.BackgroundImage")));
-            this.BtnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BtnStop.Highlight = true;
-            this.BtnStop.Location = new System.Drawing.Point(303, 98);
-            this.BtnStop.Name = "BtnStop";
-            this.BtnStop.Size = new System.Drawing.Size(42, 29);
-            this.BtnStop.Style = MetroFramework.MetroColorStyle.Blue;
-            this.BtnStop.TabIndex = 18;
-            this.BtnStop.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.BtnStop.UseCustomBackColor = true;
-            this.BtnStop.UseCustomForeColor = true;
-            this.BtnStop.UseSelectable = true;
-            this.BtnStop.UseStyleColors = true;
-            this.BtnStop.UseVisualStyleBackColor = false;
-            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -342,6 +342,8 @@ namespace Scan
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            CheckForIllegalCrossThreadCalls = false;
+            Program.stp = 1;
             Show();
             
 

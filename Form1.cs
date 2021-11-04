@@ -12,14 +12,18 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Globalization;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Scan
 {
+
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
+
         ListView Clonado = new ListView();
         public Form1()
         {
+
 
             InitializeComponent();
         }
@@ -34,110 +38,16 @@ namespace Scan
 
         public void BtnScan_Click(object sender, EventArgs e)
         {
-
-
-            //Instancia Variaveis
-            string subnet = TxtSubnet.Text;
-            PBar.Maximum = 254;
-            PBar.Value = 0;
-            ListView1.Items.Clear();
+            
 
 
 
-            //Laço buscando ip's da SUBNET e retornando no ListView
+            Thread t = new Thread(NovaThread);
 
-            for (int i = 1; i <= PBar.Maximum; i++)
-            {
-                PBar.Value += 1;
-                //Application.DoEvents();
-                string ip = $"{subnet}.{i}";
-                string status;
-                Ping ping = new Ping();
-                PingReply reply = ping.Send(ip, 100);
-
-                if (reply.Status == IPStatus.Success)
-                {
-                    if (!CkDown.Checked)
-                    {
-                        if (CkMostraHost.Checked)
-                        {
-
-                            try
-                            {
-                                IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
-                              
-
-                                ListView1.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Up", DateTime.Now.ToString() }));
-                                Cadastro cad = new Cadastro(ip, host.HostName, "Up", LUp.ToString());
-                             
-                            }
-                            catch
-                            {
-                                ListView1.Items.Add(new ListViewItem(new String[] { ip, ip.ToString(), "Up", DateTime.Now.ToString() })); //    MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Cadastro cad = new Cadastro(ip, ip.ToString(), "Up", DateTime.Now.ToString());
-                            }
-
-                        }
-                        else
-                        {
-                            ListView1.Items.Add(new ListViewItem(new String[] { ip, ip.ToString(), "Up", DateTime.Now.ToString() }));
-                            Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Up", DateTime.Now.ToString());
-                        }
-
-
-                        LblStatus.ForeColor = Color.Blue;
-                        LblStatus.Text = $"Escaneando: {ip}";
-                        if (PBar.Value == PBar.Maximum)
-                            LblStatus.Text = "Finalizado";
-
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        LblStatus.ForeColor = Color.DarkGray;
-                        LblStatus.Text = $"Escaneando: {ip}";
-                        ListView1.Items.Add(new ListViewItem(new String[] { ip, ip.ToString(), "Down", DateTime.Now.ToString() }));
-                        Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString());
-                        if (PBar.Value == PBar.Maximum)
-                        {
-
-                            LblStatus.Text = "Finalizado";
-                            PBar.Value = 0;
-                            TxtSubnet.Clear();
-                        }
-                    }
-                    catch
-                    {
-
-                    }
+            t.Start();
 
 
 
-
-
-                }
-                Application.DoEvents();
-                //Comando para o cursor descer junto com os itens do ListView
-                // var items = ListView1.Items;
-                // var last = items[items.Count];
-                //last.EnsureVisible();
-            }
-
-
-            MessageBox.Show("Processo finalizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Passar de uma lista para outra sem remover;
-            foreach (ColumnHeader cHead in ListView1.Columns)
-            {
-                Clonado.Columns.Add((ColumnHeader)cHead.Clone());
-            }
-            foreach (ListViewItem item in ListView1.Items)
-            {
-                Clonado.Items.Add(item.Clone() as ListViewItem);
-            }
-
-            // }));
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,43 +77,49 @@ namespace Scan
 
             for (int i = 0; i < 1; i++)
             {
+
                 string ip = $"{ips}";
-
-
                 Ping ping = new Ping();
                 PingReply reply = ping.Send(ip, 100);
-                if (reply.Status == IPStatus.Success)
+                if (!CkDown.Checked)
                 {
-
-                    try
+                    if (CkMostraHost.Checked)
                     {
-                        IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
-                        ListView1.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Up", DateTime.Now.ToString() }));
-                        Cadastro cad = new Cadastro(ip.ToString(), host.HostName, "Up", DateTime.Now.ToString());
+                        if (reply.Status == IPStatus.Success)
+                        {
+
+                            try
+                            {
+                                IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
+                                ListView1.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Up", DateTime.Now.ToString() }));
+                                Cadastro cad = new Cadastro(ip.ToString(), host.HostName, "Up", DateTime.Now.ToString());
+                            }
+                            catch
+                            {
+                                // MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        PBar.Value += 1;
+                        LblStatus.ForeColor = Color.Blue;
+                        LblStatus.Text = $"Scanning: {ip}";
+                        if (PBar.Value == 3)
+                            LblStatus.Text = "Finished";
+
                     }
-                    catch
+                    else
                     {
-                        // MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        PBar.Value += 1;
+                        LblStatus.ForeColor = Color.DarkGray;
+                        LblStatus.Text = $"Scanning: {ip}";
+                        var list = new ListViewItem(new String[] { ip, ip.ToString(), "Down", DateTime.Now.ToString() });
+                        list.ForeColor = Color.Red;
+                        ListView1.Items.Add(list);
+                        Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString());
+                        if (PBar.Value == 3)
+                            LblStatus.Text = "Finalizado";
                     }
-                    PBar.Value += 1;
-                    LblStatus.ForeColor = Color.Blue;
-                    LblStatus.Text = $"Scanning: {ip}";
-                    if (PBar.Value == 3)
-                        LblStatus.Text = "Finished";
-
-                }
-                else
-                {
-
-                    PBar.Value += 1;
-                    LblStatus.ForeColor = Color.DarkGray;
-                    LblStatus.Text = $"Scanning: {ip}";
-                    ListView1.Items.Add(new ListViewItem(new String[] { ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString() }));
-                    Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString());
-                    if (PBar.Value == 3)
-                        LblStatus.Text = "Finished";
-
-                }
+                }//Fim do if 
             }
 
 
@@ -354,54 +270,169 @@ namespace Scan
             }
 
         }
-    
-
-    
-
-    private void txtPesquisa_Leave(object sender, EventArgs e)
-{
 
 
 
 
+        private void txtPesquisa_Leave(object sender, EventArgs e)
+        {
 
-}
 
-private void objectListView2_SelectedIndexChanged(object sender, EventArgs e)
-{
 
-}
 
-private void fastObjectListView1_SelectedIndexChanged(object sender, EventArgs e)
-{
 
-}
+        }
 
-private void Form1_QueryAccessibilityHelp(object sender, QueryAccessibilityHelpEventArgs e)
-{
+        private void objectListView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-}
+        }
 
-private void PBar_Click(object sender, EventArgs e)
-{
+        private void fastObjectListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-}
+        }
 
-private void PBar_Click_1(object sender, EventArgs e)
-{
+        private void Form1_QueryAccessibilityHelp(object sender, QueryAccessibilityHelpEventArgs e)
+        {
 
-}
+        }
 
-private void BtnScan_Click_1(object sender, EventArgs e)
-{
+        private void PBar_Click(object sender, EventArgs e)
+        {
 
-}
+        }
+
+        private void PBar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnScan_Click_1(object sender, EventArgs e)
+        {
+
+        }
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            
+            Program.stp = 0;
         }
+
+
+        void NovaThread()
+        {
+            //Instancia Variaveis
+            string subnet = TxtSubnet.Text;
+            PBar.Maximum = 254;
+            PBar.Value = 0;
+            ListView1.Items.Clear();
+            Program.stp = 1;
+            //Laço buscando ip's da SUBNET e retornando no ListView
+
+            for (int i = 1; i <= PBar.Maximum; i++)
+            {
+                if (Program.stp == 0)
+                {
+                    PBar.Value = 0;
+                    break;
+                }
+                PBar.Value += 1;
+                string ip = $"{subnet}.{i}";
+                string status;
+                Ping ping = new Ping();
+                PingReply reply = ping.Send(ip, 30);
+
+                if (reply.Status == IPStatus.Success)
+                {
+                    if (!CkDown.Checked)
+                    {
+                        if (CkMostraHost.Checked)
+                        {
+
+                            try
+                            {
+                                IPHostEntry host = Dns.GetHostEntry(IPAddress.Parse(ip));
+                                //Adicionando no Listview e abrindo Conexao com o Banco de Dados atraves da Classe Cadastro e adicionando no banco 
+
+                                ListView1.Items.Add(new ListViewItem(new String[] { ip, host.HostName, "Up", DateTime.Now.ToString() }));
+                                Cadastro cad = new Cadastro(ip, host.HostName, "Up", LUp.ToString());
+
+
+                            }
+                            catch
+                            {
+                                //Adicionando no Listview e abrindo Conexao com o Banco de Dados atraves da Classe Cadastro e adicionando no banco 
+                                ListView1.Items.Add(new ListViewItem(new String[] { ip, ip.ToString(), "Up", DateTime.Now.ToString() })); //    MessageBox.Show($"Couldn't retrieve hostname from {ip}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Cadastro cad = new Cadastro(ip, ip.ToString(), "Up", DateTime.Now.ToString());
+                            }
+
+                        }
+                        else
+                        {
+                            //Adicionando no Listview e abrindo Conexao com o Banco de Dados atraves da Classe Cadastro e adicionando no banco  
+                            ListView1.Items.Add(new ListViewItem(new String[] { ip, ip.ToString(), "Up", DateTime.Now.ToString() }));
+                            Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Up", DateTime.Now.ToString());
+                        }
+
+
+                        LblStatus.ForeColor = Color.Blue;
+                        LblStatus.Text = $"Escaneando: {ip}";
+                        if (PBar.Value == PBar.Maximum)
+                            LblStatus.Text = "Finalizado";
+
+                    }//Fim do If
+                }
+                else
+                {
+                    try
+                    {
+                        LblStatus.ForeColor = Color.DarkGray;
+                        LblStatus.Text = $"Escaneando: {ip}";
+
+                        //Antes de adicionar no ListView e no Banco, estou armazenando o ListViewItem em uma variavel "list" para poder trocar a cor dos items
+                        var list = new ListViewItem(new String[] { ip, ip.ToString(), "Down", DateTime.Now.ToString() });
+                        list.ForeColor = Color.Red;
+                        ListView1.Items.Add(list);
+
+                        //Abrindo Conexao com o Banco de Dados atraves da Classe Cadastro e adicionando no banco
+
+                        //  ListView1.Items.Add(new ListViewItem(new String[] { ip, ip.ToString(), "Down", DateTime.Now.ToString() }));
+                        Cadastro cad = new Cadastro(ip.ToString(), ip.ToString(), "Down", DateTime.Now.ToString());
+                        if (PBar.Value == PBar.Maximum)
+                        {
+
+                            LblStatus.Text = "Finalizado";
+                            PBar.Value = 0;
+                            TxtSubnet.Clear();
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+                Application.DoEvents();
+
+            }//Fim do For
+
+                MessageBox.Show("Processo finalizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Passar de uma lista para outra sem remover;
+                foreach (ColumnHeader cHead in ListView1.Columns)
+                {
+                    Clonado.Columns.Add((ColumnHeader)cHead.Clone());
+                }
+                foreach (ListViewItem item in ListView1.Items)
+                {
+                    Clonado.Items.Add(item.Clone() as ListViewItem);
+                }
+
+            
+        }//NovaThread
+
     }
+
+
 }
 
 
