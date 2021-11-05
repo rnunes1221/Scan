@@ -23,7 +23,7 @@ namespace Scan {
         private void Historico_Load(object sender, EventArgs e) {
           
 
-            string sql = "SELECT * FROM HISTORICO  WHERE Ip='"+Program.ipgrid+"'";
+            string sql = "SELECT * FROM HISTORICO  WHERE Ip='"+Program.ipgrid+ "'"+" ORDER by LastUP DESC ";
             Conexao conexao = new Conexao();
             SqlConnection cnn = conexao.conectar();
          //   MessageBox.Show(sql);
@@ -63,6 +63,11 @@ namespace Scan {
 
         private void ListViewHistorico_SelectedIndexChanged(object sender, EventArgs e) {
 
+        }
+
+        private void ListViewHistorico_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            
         }
     }
 }

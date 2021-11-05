@@ -56,6 +56,7 @@ namespace Scan {
             this.ListViewHistorico.TabIndex = 2;
             this.ListViewHistorico.UseCompatibleStateImageBehavior = false;
             this.ListViewHistorico.View = System.Windows.Forms.View.Details;
+            this.ListViewHistorico.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListViewHistorico_ColumnClick);
             this.ListViewHistorico.SelectedIndexChanged += new System.EventHandler(this.ListViewHistorico_SelectedIndexChanged);
             this.ListViewHistorico.Enter += new System.EventHandler(this.Historico_Load);
             // 
